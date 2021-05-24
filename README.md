@@ -3,6 +3,13 @@
 Online Coding Quiz
 This project had me create an online quiz based on coding. This appears to be a very important skill to have when you go into coding, as it teaches you how to create something using mostly Javascript. It's very hard to do for me at this point, as I will point out in my "Bugs" section. I had to use a lot of research, video watching and Inspections on multiple sites to get it to where it is.
 
+Here is the link:  https://slongy7.github.io/CodeQuiz/
+
+Screen Shots:
+Image 5-23-21 at 4.11 PM.jpg![image](https://user-images.githubusercontent.com/79759725/119396972-8dd26880-bca3-11eb-91a2-acb8f5dec002.png)
+Image 5-23-21 at 4.12 PM.jpg![image](https://user-images.githubusercontent.com/79759725/119397030-9f1b7500-bca3-11eb-8858-d6961319ff58.png)
+
+
 Bugs
 I had issues having the leaderboard display after each round. I believe I maybe needed to create an additional HTML, but I wasn't confident in that. I also had my multiple choice selections stlyed, but then the style dissapeared on me, so I'll be studying up on that as well.
 
