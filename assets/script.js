@@ -1,32 +1,3 @@
-// Creating questions
-var questions = [
-    {
-        title: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
-    },
-    {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
-    },
-    {
-        title: "Arrays in Javascript can be used to store ____.",
-        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        answer: "all of the above"
-    },
-    {
-        title: "String values must be enclosed within ____ when being assigned to variables.",
-        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
-        answer: "quotes"
-    },
-    {
-        title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-        choices: ["Javascript", "terminal / bash", "for loops", "console log"],
-        answer: "console log"
-    },
-
-];
 
 var score = 0;
 var questionIndex = 0;
@@ -62,15 +33,15 @@ timer.addEventListener("click", function () {
 });
 
 // Places the questions and answer choices on page 
-function render(questionIndex) {
+function render(questionChoices) {
     
     questionsDiv.innerHTML = "";
     ulCreate.innerHTML = "";
     
     for (var i = 0; i < questions.length; i++) {
         
-        var userQuestion = questions[questionIndex].title;
-        var userChoices = questions[questionIndex].choices;
+        var userQuestion = questions[questionChoices].title;
+        var userChoices = questions[questionChoices].choices;
         questionsDiv.textContent = userQuestion;
     }
     
@@ -82,6 +53,36 @@ function render(questionIndex) {
         listItem.addEventListener("click", (compare));
     })
 }
+
+// Creating questions
+var questions = [
+    {   title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+        choices: ["Javascript", "terminal / bash", "for loops", "console log"],
+        answer: "console log"
+    
+    },
+    {
+        title: "Which command will stop an infinite loop?",
+        choices: ["Alt - C", "Shift - C", "Esc", "Ctrl - C"],
+        answer: "Ctrl - C"
+    },
+    {
+        title: "_______ is the program of finding errors and fixing them within a program.",
+        choices: ["Compiling", "Debugging", "Executing", "Scanning"],
+        answer: "Debugging"
+    },
+    {
+        title: "A loop that never ends is referred to as a (n)_____.",
+        choices: ["while Loop", "recursive loop", "infinite loop", ")for loop"],
+        answer: "infinite loop"
+    },
+    {
+        title: "Commonly used data types DO NOT include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts"
+    },
+
+];
 // Checking if the answer is right
 function compare(event) {
     var element = event.target;
@@ -175,18 +176,18 @@ function allDone() {
             console.log("No value entered!");
 
         } else {
-            var finalScore = {
+            var scoreFinal = {
                 initials: initials,
                 score: timeRemaining
             }
-            console.log(finalScore);
+            console.log(scoreFinal);
             var allScores = localStorage.getItem("allScores");
             if (allScores === null) {
                 allScores = [];
             } else {
                 allScores = JSON.parse(allScores);
             }
-            allScores.push(finalScore);
+            allScores.push(scoreFinal);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
             
@@ -195,35 +196,3 @@ function allDone() {
     });
 
 }
-
-
-
-// This is where my highscore isn't working...  Tried to research with no results
-
-var highScore = document.querySelector("#highScore");
-var clear = document.querySelector("#clear");
-var goBack = document.querySelector("#goBack");
-
-
-clear.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-});
-
-var allScores = localStorage.getItem("allScores");
-allScores = JSON.parse(allScores);
-
-if (allScores !== null) {
-
-    for (var i = 0; i < allScores.length; i++) {
-
-        var createLi = document.createElement("li");
-        createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-        highScore.appendChild(createLi);
-
-    }
-}
-
-goBack.addEventListener("click", function () {
-    window.location.replace("./index.html");
-});
